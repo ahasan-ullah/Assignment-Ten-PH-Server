@@ -11,6 +11,15 @@ app.get("/",(req,res)=>{
   res.send("basic server is running");
 });
 
+app.get('/all-products',(req,res)=>{
+  res.send("Hello from products");
+})
+
+app.post('/all-products',(req,res)=>{
+  const Allproducts=req.body;
+  res.send(Allproducts)
+})
+
 app.listen(port,()=>{
   console.log("basic server setup done");
 })
