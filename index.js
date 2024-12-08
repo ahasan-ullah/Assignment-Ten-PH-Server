@@ -43,6 +43,15 @@ async function run() {
       const result=await products.findOne(query);
       res.send(result);
     })
+
+    app.get('/all-products-by-email/:email',async(req,res)=>{
+      const email=req.params.email;
+      console.log(email);
+      console.log(typeof email)
+      const query={userEmail: email};
+      const result=await products.find(query).toArray();
+      res.send(result);
+    })
     
     app.post('/all-products',async(req,res)=>{
       const product=req.body;
