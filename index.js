@@ -7,17 +7,20 @@ const app=express();
 app.use(express.json());
 app.use(cors());
 
+const produts=[]
+
 app.get("/",(req,res)=>{
   res.send("basic server is running");
 });
 
 app.get('/all-products',(req,res)=>{
-  res.send("Hello from products");
+  res.send(produts);
 })
 
 app.post('/all-products',(req,res)=>{
-  const Allproducts=req.body;
-  res.send(Allproducts)
+  const allProducts=req.body;
+  produts.push(allProducts);
+  res.send(allProducts)
 })
 
 app.listen(port,()=>{
