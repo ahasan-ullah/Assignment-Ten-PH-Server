@@ -62,7 +62,7 @@ async function run() {
       const id=req.params.id;
       const product=req.body;
       const filter={_id: new ObjectId(id)};
-      const options={usert: true};
+      const options={upsert: true};
       const updatedProduct={
         $set:{
           image: product.image,
