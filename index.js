@@ -46,8 +46,6 @@ async function run() {
 
     app.get('/all-products-by-email/:email',async(req,res)=>{
       const email=req.params.email;
-      console.log(email);
-      console.log(typeof email)
       const query={userEmail: email};
       const result=await products.find(query).toArray();
       res.send(result);
@@ -57,6 +55,15 @@ async function run() {
       const product=req.body;
       console.log(product);
       const result=await products.insertOne(product);
+      res.send(result);
+    })
+
+
+    app.delete('/all-products/:id',async(req,res)=>{
+      const id=req.params.id;
+      console.log(id);
+      const query={_id: new ObjectId(id)};
+      const result=await products.deleteOne(query);
       res.send(result);
     })
 
